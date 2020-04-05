@@ -4,6 +4,7 @@ var runnerDebug = 0;
 
 function pressShiftKey(code)
 {
+/*	cheat key code disable 5/16/2015
 	switch(code) {
 	case KEYCODE_PERIOD: //SHIFT-. = '>', change to next level
 		shiftLevelNum = 1;	
@@ -29,6 +30,7 @@ function pressShiftKey(code)
 		if(runnerDebug) debugKeyPress(code);
 		break;
 	}
+*/	
 }
 
 function pressCtrlKey(code)
@@ -39,26 +41,52 @@ function pressCtrlKey(code)
 		break;	
 	case KEYCODE_C: //CTRL-C : copy current level
 		copyLevelMap = levelData[curLevel-1];
-		showTipsText("COPY MAP", 0);	
+		copyLevelPassed = 1; //means copy from exists level	
+		showTipsText("COPY MAP", 1500);	
+		break;	
+	case KEYCODE_J:	//CTRL-J : gamepad toggle
+		toggleGamepadMode(1);
+		//if(gamepadIconObj) gamepadIconObj.updateGamepadImage();	
+		break;	
+	case KEYCODE_K: //CTRL-K : repeat actions On/Off
+		toggleRepeatAction();	
+		repeatActionIconObj.updateRepeatActionImage();	
 		break;	
 	case KEYCODE_R: //CTRL-R : abort game
 		runnerLife = 1;	
 		gameState = GAME_RUNNER_DEAD;	
 		break;	
+	case KEYCODE_X: //CTRL-X 
+		toggleTrapTile();
+		break;
+//	case KEYCODE_Z: //CTRL-Z, toggle god mode
+//		toggleGodMode();
+//		break;	
 	case KEYCODE_S: //CTRL-S, toggle sound 
 		if( (soundOff ^= 1) == 1) {
-			soundDig.stop();
-			soundFall.stop();
-			showTipsText("SOUND OFF", 0);
+			soundStop(soundDig);
+			soundStop(soundFall);
+			showTipsText("SOUND OFF", 1500);
 		} else {
-			showTipsText("SOUND ON", 0);
+			showTipsText("SOUND ON", 1500);
 		}
+		soundIconObj.updateSoundImage(); //toggle sound On/Off icon	
 		break;	
 	case KEYCODE_LEFT: //SHIFT + <- : speed down
 		setSpeed(-1);	
 		break;	
 	case KEYCODE_RIGHT: //SHIFT + -> : speed up
 		setSpeed(1);	
+		break;
+	case KEYCODE_H:	//CTRL-H : redHat mode on/off
+		toggleRedhatMode();
+		break;
+	case KEYCODE_1: //CTRL-1
+	case KEYCODE_2: //CTRL-2
+	case KEYCODE_3: //CTRL-3
+	case KEYCODE_4: //CTRL-4
+	case KEYCODE_5: //CTRL-5
+		themeColorChange(code - KEYCODE_1);
 		break;	
 	}
 }
@@ -101,23 +129,77 @@ function debugKeyPress(code)
 	}
 }
 
+var repeatAction = 0;  //1: keyboard repeat on, 0: keyboard repeat Off
+var repeatActionPressed = 0;
+var gamepadMode = 1; //0: disable, 1: enable
+var redhatMode = 1;
 var godMode = 0, godModeKeyPressed = 0;
 
 function initHotKeyVariable()
 {
 	godMode = 0;
 	godModeKeyPressed = 0;
+	repeatActionPressed = 0;
 }
+
+function toggleRepeatAction()
+{
+	if( (repeatAction ^= 1) == 1) {
+		showTipsText("REPEAT ACTIONS ON", 2500);
+	} else {
+		showTipsText("REPEAT ACTIONS OFF", 2500);
+	}
+	if(gameState != GAME_START) repeatActionPressed=1; //player change the "repeatAction" Mode at running
+	
+	setRepeatAction();
+}
+
+function toggleGamepadMode(textMsg)
+{
+	if(!gamepadSupport()) {
+		if(textMsg) showTipsText("GAMEPAD NOT SUPPORTED", 2500);
+		gamepadMode = 0;
+	} else {
+		if( (gamepadMode ^= 1) == 1) {
+			gamepadEnable();
+			if(textMsg) showTipsText("GAMEPAD ON", 2500);
+		} else {
+			gamepadDisable();
+			if(textMsg) showTipsText("GAMEPAD OFF", 2500);
+		}
+	}
+	setGamepadMode();
+}
+
+function toggleRedhatMode()
+{
+	if( (redhatMode ^= 1) == 1 ) { //enable
+		for(var i = 0; i < guardCount; i++) {
+			if(guard[i].hasGold > 0)
+				guard[i].sprite.spriteSheet = redhatData;
+			else	
+				guard[i].sprite.spriteSheet = guardData;
+		}
+		showTipsText("REDHAT MODE ON", 1500);
+	} else { //disable
+		for(var i = 0; i < guardCount; i++) {
+				guard[i].sprite.spriteSheet = guardData;
+		}
+		showTipsText("REDHAT MODE OFF", 1500);
+	}
+}
+
 
 function toggleGodMode()
 {
 	godModeKeyPressed = 1; //means player press the god-mod hot-key
+	sometimePlayInGodMode = 1; // 12/23/2014 
 	
 	godMode ^= 1;
 	if(godMode) {
-		showTipsText("GOD MODE ON", 0);
+		showTipsText("GOD MODE ON", 1500);
 	} else {	
-		showTipsText("GOD MODE OFF", 0);
+		showTipsText("GOD MODE OFF", 1500);
 	}
 }
 
@@ -127,7 +209,7 @@ function setSpeed(v)
 	if(speed < 0) speed = 0;
 	if(speed >= speedMode.length) speed = speedMode.length-1;
 	createjs.Ticker.setFPS(speedMode[speed]);
-	showTipsText(speedText[speed], 0);
+	showTipsText(speedText[speed], 1500);
 }
 
 function helpCallBack() //help complete call back
@@ -139,36 +221,45 @@ function pressKey(code)
 {
 	switch(code) {
 	case KEYCODE_LEFT:        
-	case KEYCODE_J:		
+	case KEYCODE_J:	
+	case KEYCODE_A:		
 		keyAction = ACT_LEFT;
 		break;
 	case KEYCODE_RIGHT: 
 	case KEYCODE_L:		
+	case KEYCODE_D:
 		keyAction = ACT_RIGHT;
 		break;
-	case KEYCODE_UP: 
-	case KEYCODE_I:		
+	case KEYCODE_UP:
+	case KEYCODE_I:
+	case KEYCODE_W:
 		keyAction = ACT_UP;
 		break;
 	case KEYCODE_DOWN: 
-	case KEYCODE_K:		
+	case KEYCODE_K:
+	case KEYCODE_S:
 		keyAction = ACT_DOWN;
 		break;
 	case KEYCODE_Z:
-	case KEYCODE_U:		
+	case KEYCODE_Y:  //Y key to dig left, for German keyboards
+	case KEYCODE_U:	
+	case KEYCODE_Q:		
+	case KEYCODE_COMMA: //,
 		keyAction = ACT_DIG_LEFT;
 		break;	
 	case KEYCODE_X:
-	case KEYCODE_O:		
+	case KEYCODE_O:
+	case KEYCODE_E:		
+	case KEYCODE_PERIOD: //.
 		keyAction = ACT_DIG_RIGHT;
 		break;	
 	case KEYCODE_ESC: //help & pause
 		if(gameState == GAME_PAUSE) {
 			gameResume();
-			showTipsText("", 0); //clear text
+			showTipsText("", 1000); //clear text
 		} else {
 			gamePause();
-			showTipsText("PAUSE", 1); //display "PAUSE"
+			showTipsText("PAUSE", 0); //display "PAUSE"
 			//helpObj.showHelp(helpCallBack);
 		}
 		break;
@@ -176,7 +267,7 @@ function pressKey(code)
 		if(playMode == PLAY_CLASSIC) {
 			menuIconDisable(1);
 			gamePause();
-			showScoreTable(playData-1, null, function() { menuIconEnable(); gameResume();});	
+			showScoreTable(playData, null, function() { menuIconEnable(); gameResume();});	
 		} else {
 			keyAction = ACT_UNKNOWN;
 		}
@@ -222,24 +313,21 @@ function handleKeyDown(event)
     	    gameState == GAME_START || gameState == GAME_RUNNING) 
 		{
 			if(recordMode != RECORD_PLAY && playMode != PLAY_AUTO) {
-				pressKey(event.keyCode);	
+				pressKey(event.keyCode);
 			}
 		}
 		
 	}
- /*
-	//e.cancelBubble is supported by IE - this will kill the bubbling process.
-	event.cancelBubble = true;
-	event.returnValue = false;
-
-	//event.stopPropagation works only in Firefox.
-	if (event.stopPropagation) {
-		event.stopPropagation();
-		event.preventDefault();
-	}
- */	
+	
 	if(event.keyCode >= 112 && event.keyCode <= 123) return true; //F1 ~ F12
 	return false;
 	
-}		
-	
+}	
+
+function handleKeyUp(event)
+{
+	if(repeatAction) return true;
+	if(!event){ event = window.event; } 
+	if(recordKeyCode == event.keyCode && keyPressed != -1) keyPressed = 0;
+	return true;
+}
