@@ -37,7 +37,7 @@ Game levels include original <b>[Lode Runner (150 levels)</b>
 
 ### OTHER Version
 
-There is a newer version of the original author (remaker) yet we stick to this one as it contains less gear, less menus, but only a game's originals levels. However the new vrsion you find here, it's cool: <a target="_blank" href="https://github.com/SimonHung/LodeRunner_TotalRecall">Lode Runner - Total Recall (超級運動員 - 全面回憶)</a>
+There is a newer version of the original author (remaker) yet we stick to this one as it contains less gear, less menus, but only a game's originals levels. However that newer version you find by the following url: <a target="_blank" href="https://github.com/SimonHung/LodeRunner_TotalRecall">Lode Runner - Total Recall (超級運動員 - 全面回憶)</a>
  
 
 ------------------------------------
