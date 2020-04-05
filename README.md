@@ -1,9 +1,9 @@
-<a href="https://angrybud.com/games/loderunner">LodeRunner - play it here</a>
-=======================================
 
-This program build with Javascript + [CreateJS](http://www.createjs.com).
+This program build with Javascript + [CreateJS](http://www.createjs.com)
 
-Our latest changes find here online + [Angrybud.com](https://angrybud.com).
+Our latest changes find here online + [Angrybud.com/apps](https://angrybud.com/apps)
+
+=> [Play game here](https://angrybud.com/games/loderunner/)
 
 Game levels include original <b>[Lode Runner (150 levels)</b>
 
