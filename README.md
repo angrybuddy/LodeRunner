@@ -1,9 +1,7 @@
 
-This program build with Javascript + [CreateJS](http://www.createjs.com)
+This program build with Javascript + CreateJS
 
-Our latest changes find here online + [Angrybud.com/apps](https://angrybud.com/apps)
-
-=> [Play game here](https://angrybud.com/games/loderunner/)
+Our latest changes find here online => [Play game here](https://angrybud.com/games/loderunner/)
 
 Game levels include original <b>[Lode Runner (150 levels)</b>
 
@@ -31,7 +29,7 @@ Game levels include original <b>[Lode Runner (150 levels)</b>
 
 </table>
 
-### NEW Version
+### OTHER Version
 
 There is a newer version of the original author (remaker) yet we stick to this one as it contains less gear, less menus, but only a game's originals levels. However the new vrsion you find here, it's cool: <a target="_blank" href="https://github.com/SimonHung/LodeRunner_TotalRecall">Lode Runner - Total Recall (超級運動員 - 全面回憶)</a>
  
