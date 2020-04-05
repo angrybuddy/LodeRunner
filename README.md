@@ -1,9 +1,11 @@
-<a target="_blank" href="https://angrybud.com/games/loderunner">Lode Runner - play online</a>
+<a href="https://angrybud.com/games/loderunner">LodeRunner - play it here</a>
 =======================================
 
 This program build with Javascript + [CreateJS](http://www.createjs.com).
 
-Game levels include <b>[Lode Runner (150 levels) & Championship Lode Runner (50 levels)](http://strategywiki.org/wiki/Lode_Runner/Walkthrough)</b>
+Our latest changes find here online + [Angrybud.com](https://angrybud.com).
+
+Game levels include original <b>[Lode Runner (150 levels)</b>
 
 ### GAME Mode
 <table>
