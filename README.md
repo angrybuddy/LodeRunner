@@ -1,4 +1,4 @@
-<a target="_blank" href="http://loderunnerwebgame.com/LodeRunner/">Lode Runner (超級運動員)</a>
+<a target="_blank" href="https://angrybud.com/games/loderunner">Lode Runner - play online</a>
 =======================================
 
 This program build with Javascript + [CreateJS](http://www.createjs.com).
@@ -31,7 +31,7 @@ Game levels include <b>[Lode Runner (150 levels) & Championship Lode Runner (50 
 
 ### NEW Version
 
-Switch to new version: <a target="_blank" href="https://github.com/SimonHung/LodeRunner_TotalRecall">Lode Runner - Total Recall (超級運動員 - 全面回憶)</a>
+There is a newer version of the original author (remaker) yet we stick to this one as it contains less gear, less menus, but only a game's originals levels. However the new vrsion you find here, it's cool: <a target="_blank" href="https://github.com/SimonHung/LodeRunner_TotalRecall">Lode Runner - Total Recall (超級運動員 - 全面回憶)</a>
  
 
 ------------------------------------
