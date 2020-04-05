@@ -35,6 +35,14 @@ Game levels include original <b>[Lode Runner (150 levels)</b>
 - Rotate screen detection
 - Fix few levels which drive me mad since 1992 =)
 
+### FIXES APPLIED
+
+![bitcoin runner webgame](https://angrybud.com/wp-content/uploads/2020/04/loderunner_zx_screenshot-1536x1059.png)
+
+- collectable gold is now a bitcoin pixelwork
+- running man bears rasta colours
+- other changes in colors and decor (ongoing)
+
 ### OTHER Version
 
 There is a newer version of the original author (remaker) yet we stick to this one as it contains less gear, less menus, but only a game's originals levels. However that newer version you find by the following url: <a target="_blank" href="https://github.com/SimonHung/LodeRunner_TotalRecall">Lode Runner - Total Recall (超級運動員 - 全面回憶)</a>
