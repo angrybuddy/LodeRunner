@@ -1,11 +1,11 @@
 
 This program build with Javascript + CreateJS
 
-Our latest changes find here online => [Play game here](https://angrybud.com/games/loderunner/)
+The current changes find here online => [Play game here](https://angrybud.com/games/loderunner/)
 
 Game levels include original <b>[Lode Runner (150 levels)</b>
 
-### GAME Mode
+### GAME Modes
 <table>
 <tr>
 <td><b>CLASSIC MODE</b></td> 
@@ -33,19 +33,19 @@ Game levels include original <b>[Lode Runner (150 levels)</b>
 
 - Challenging to add mobile controls
 - Rotate screen detection
-- Fix few levels which drive me mad since 1992 =)
+- Fix few levels, impossible or boring or both, which drive me mad since 1992 (ongoing)
 
 ### FIXES APPLIED
 
 ![bitcoin runner webgame](https://angrybud.com/wp-content/uploads/2020/04/loderunner_zx_screenshot-1536x1059.png)
 
 - collectable gold is now a bitcoin pixelwork
-- running man bears rasta colours
+- running guy wears rasta colours
 - other changes in colors and decor (ongoing)
 
 ### OTHER Version
 
-There is a newer version of the original author (remaker) yet we stick to this one as it contains less gear, less menus, but only a game's originals levels. However that newer version you find by the following url: <a target="_blank" href="https://github.com/SimonHung/LodeRunner_TotalRecall">Lode Runner - Total Recall (超級運動員 - 全面回憶)</a>
+There is a newer version of the original author (or remaker) yet we stick to this one as it contains less gear, less menus, but only a game's originals levels. However that newer version you find by the following url: <a href="https://github.com/SimonHung/LodeRunner_TotalRecall">Lode Runner - Total Recall (超級運動員 - 全面回憶)</a>
  
 
 ------------------------------------
