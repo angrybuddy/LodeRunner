@@ -3,7 +3,7 @@ This program build with Javascript + CreateJS
 
 The current changes find here online => [Play game here](https://angrybud.com/games/loderunner/)
 
-Game levels include original <b>[Lode Runner (150 levels)</b>
+Game levels include original <b>Lode Runner 150 levels</b>
 
 ### GAME Modes
 <table>
